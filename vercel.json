@@ -1,9 +1,8 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "manage.py",
-      "use": "vercel-python-gunicorn"
+      "use": "@vercel/python"
     }
   ],
   "routes": [
