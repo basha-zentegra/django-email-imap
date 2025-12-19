@@ -18,9 +18,24 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("emails/", views.get_emails),
+    path("sent_emails/", views.get_sent_emails),
     path("inbox/", views.inbox_page , name="home"),   
-    path("", views.login)
+    # path("", views.login_temp),
+    path("signup/", views.signup_view, name="signup"),
+    path("signin/", views.signin_view, name="signin"),
+    path("logout/", views.logout_view, name="logout"),
+    # path('api/hello/', views.my_json_view),
+
+
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+
+    path("send-email/", views.send_email),
+    # path("testing/", views.sent_emails)get_sent_emails
 ]
